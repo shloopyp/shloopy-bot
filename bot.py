@@ -11,6 +11,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
+    bot.tree.clear_commands(guild=None)
+    await bot.tree.sync()
+    print("Cleared all commands and synced.")
     await bot.change_presence(activity=discord.Game(name="shloopy"))
 
 # Load cogs
